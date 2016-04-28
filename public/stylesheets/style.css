@@ -1,0 +1,27 @@
+body {
+  padding: 30px 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.node {
+	stroke: #fff;
+	stroke-width: 1.5px;
+}
+
+.link {
+	stroke: #999;
+	stroke-opacity: .6;
+}
+#graphs{
+	text-align: center;
+}
+.tab-content-custom{
+	height: 450px;
+	overflow: scroll;
+}
+table thead:hover {
+	cursor:pointer;
+}

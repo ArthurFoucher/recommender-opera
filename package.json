@@ -1,0 +1,26 @@
+{
+  "name": "weceipt",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "./start.sh"
+  },
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "hbs": "~3.1.0",
+    "morgan": "~1.6.1",
+    "node-correlation": "^1.0.2",
+    "request": "^2.72.0",
+    "serve-favicon": "~2.3.0",
+    "shortid": "^2.2.4"
+  },
+  "description": " The tool quickly tests models for a spectacle recommandation system. it allows users to easily compute and compare models and to create recommandations for clients based on their previous tickets and a proximity score between spectacles computed with the model.",
+  "main": "app.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

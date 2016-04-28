@@ -1,0 +1,5 @@
+*.DS_Store 
+public/data/score/*.json
+public/data/d3/*.json
+npm-debug.log
+node_modules/*

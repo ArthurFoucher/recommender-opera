@@ -1,0 +1,266 @@
+<script type="text/javascript" src="/javascripts/tablesorter/jquery.tablesorter.min.js"></script> 
+<script type="text/javascript" src="/javascripts/client.js"></script> 
+<div class="row">
+	<a href="/">
+		<h1>Ponderation</h1>
+	</a>
+
+
+	<form method="GET" action="/display" id="form-display">
+		<p>L'outil permet de tester différentes pondérations en choississant une valeur initiale, une valeur finale et un pas.</p>
+		<p>En sortie, il affiche toutes les pondérations testées et la corrélation entre la liste de score calculé pour chaque spectacle et celle de score effectif donné par les données clients.</p>
+
+		<div class="col-md-12 panel panel-default">
+		<div class="col-md-6">
+			<h3 class="col-md-12">Poids du score TF-IDF</h3>
+			
+			<div class="col-md-4 panel-body">
+				<h6>Valeur initiale</h6><input type="number" class="input-sm" name="words[start]" min="0" max="1" step="0.05" value="0.25">
+			</div>
+			<div class="col-md-4 panel-body">
+				<h6>Valeur finale</h6><input type="number" class="input-sm" name="words[end]" min="0" max="1" step="0.05" value="1">
+			</div>
+			<div class="col-md-4 panel-body">
+				<h6>Pas</h6><input type="number" class="input-sm" name="words[step]" min="0" max="1" step="0.05" value="0.25">
+			</div>
+			
+		</div>
+
+		<div class="col-md-6">
+			<h3 class="col-md-12">Poids des méta-données</h3>
+			
+			<div class="col-md-4 panel-body">
+				<h6>Valeur initiale</h6> <input type="number" class="input-sm" name="meta[start]" min="0" max="1" step="0.25" value="0">
+			</div>
+			<div class="col-md-4 panel-body">
+				<h6>Valeur finale</h6> <input type="number" class="input-sm" name="meta[end]" min="0" max="1" step="0.05" value="1">
+			</div>
+			<div class="col-md-4 panel-body">
+				<h6>Pas</h6> <input type="number" class="input-sm" name="meta[step]" min="0" max="1" step="0.05" value="0.5">
+			</div>
+			
+		</div>
+		<div class="col-md-12" style="text-align:right;" id="meta-button">
+			<a role="button" onclick="$('#hide-meta-button').show();$('#meta-button').hide();$('#collapser').show()">
+			  Afficher les pondérations
+			</a>
+		</div>
+		<div class="col-md-12" style="text-align:right;display:none;" id="hide-meta-button">
+			<a role="button" onclick="$('#meta-button').show();$('#hide-meta-button').hide();$('#collapser').hide()">
+			  Cacher les pondérations
+			</a>
+		</div>
+		</div>
+		<div class="col-md-12" style="display:none;" id="collapser">
+			<div class="col-md-6 panel panel-default">
+				<h5 class="col-md-12">Compositeur</h5>
+				
+				<div class="col-md-4">
+					<h6 class="col-md-6">Valeur initiale</h6><input style="margin-top:10px" class="input-sm col-md-6" class="input-sm col-md-4" type="number" name="compositeur[start]" min="0" max="1" step="0.05" value="0">
+				</div>
+				<div class="col-md-4">
+					<h6 class="col-md-6">Valeur finale</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="compositeur[end]" min="0" max="1" step="0.05" value="1">
+				</div>
+				<div class="col-md-4">
+				<h6 class="col-md-6">Pas</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="compositeur[step]" min="0.1" max="1" step="0.05" value="1">
+				</div>
+				
+			</div>
+
+			<div class="col-md-6 panel panel-default">
+				<h5 class="col-md-12">Chef d'orchestre</h5>
+				
+				<div class="col-md-4">
+					<h6 class="col-md-6">Valeur initiale</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="chef[start]" min="0" max="1" step="0.05" value="0">
+				</div>
+				<div class="col-md-4">
+					<h6 class="col-md-6">Valeur finale</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="chef[end]" min="0" max="1" step="0.05" value="1">
+				</div>
+				<div class="col-md-4">
+					<h6 class="col-md-6">Pas</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="chef[step]" min="0.1" max="1" step="0.05" value="1">
+				</div>
+				
+			</div>
+			<div class="col-md-6 panel panel-default">
+				<h5 class="col-md-12">Choregraphe</h5>
+				
+				<div class="col-md-4">
+					<h6 class="col-md-6">Valeur initiale</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="choregraphe[start]" min="0" max="1" step="0.05" value="0">
+				</div>
+				<div class="col-md-4">
+					<h6 class="col-md-6">Valeur finale</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="choregraphe[end]" min="0" max="1" step="0.05" value="1">
+				</div>
+				<div class="col-md-4">
+					<h6 class="col-md-6">Pas</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="choregraphe[step]" min="0.1" max="1" step="0.05" value="1">
+				</div>
+				
+			</div>
+
+			<div class="col-md-6 panel panel-default">
+				<h5 class="col-md-12">Metteur en scene</h5>
+				
+				<div class="col-md-4">
+				<h6 class="col-md-6">Valeur initiale</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="metteur[start]" min="0" max="1" step="0.05" value="0">
+				</div>
+				<div class="col-md-4">
+					<h6 class="col-md-6">Valeur finale</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="metteur[end]" min="0" max="1" step="0.05" value="1">
+				</div>
+				<div class="col-md-4">
+				<h6 class="col-md-6">Pas</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="metteur[step]" min="0.1" max="1" step="0.05" value="1">
+				</div>
+				
+			</div>
+
+			<div class="col-md-6 panel panel-default">
+				<h5 class="col-md-12">Salle</h5>
+				
+				<div class="col-md-4">
+					<h6 class="col-md-6">Valeur initiale</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="salle[start]" min="0" max="1" step="0.05" value="0">
+				</div>
+				<div class="col-md-4">
+					<h6 class="col-md-6">Valeur finale</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="salle[end]" min="0" max="1" step="0.05" value="0">
+				</div>
+				<div class="col-md-4">
+					<h6 class="col-md-6">Pas</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="salle[step]" min="0.1" max="1" step="0.05" value="1">
+				</div>
+				
+			</div>
+
+			<div class="col-md-6 panel panel-default">
+				<h5 class="col-md-12">Type</h5>
+				
+				<div class="col-md-4">
+				<h6 class="col-md-6">Valeur initiale</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="type[start]" min="0" max="1" step="0.05" value="1">
+				</div>
+				<div class="col-md-4">
+				<h6 class="col-md-6">Valeur finale</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="type[end]" min="0" max="1" step="0.05" value="1">
+				</div>
+				<div class="col-md-4">
+					<h6 class="col-md-6">Pas</h6><input style="margin-top:10px" class="input-sm col-md-6" type="number" name="type[step]" min="0.1" max="1" step="0.05" value="1">
+				</div>
+				
+			</div>
+		</div>
+		{{#if error}}
+		<div class="col-md-4 col-md-offset-4 text-center alert alert-danger">
+			Connexion to database failed
+		</div>
+		{{else}}
+		<div class="col-md-12 text-center">
+			<input type="submit" class="btn bnt-primary btn-lg" value="Tester">
+		</div>
+		{{/if}}
+	</form>
+</div>
+<br />
+<br />
+<div>
+{{#if rows }}
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs nav-justified" role="tablist" id="navbar-holder">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Résultats</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Graphes</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Spectacles proches</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Rappel et Précision</a></li>
+    <!-- <li role="presentation"><a href="#">Meilleure corrélation : {{rows.[0].[1]}}</a></li> -->
+    <li role="presentation" style="border-bottom: 1px solid #ddd;"><h6>Meilleure corrélation : {{rows.[0].[1]}}%</h6></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <br />
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+		<table class="tablesorter table table-striped table-bordered" cellspacing="1" id="ranking">
+		    <thead> 
+		        <tr> 
+		            <th>Classement</th> 
+		            <th>Coefficient de corrélation</th> 
+		            <th>Poids TF-IDF</th> 
+		            <th>Poids Méta-données</th> 
+		            <th>Poids Compositeur</th> 
+		            <th>Poids Chef d'orchestre</th> 
+		            <th>Poids Chorégraphe</th> 
+		            <th>Poids Metteur en scène</th> 
+		            <th>Poids Salle</th> 
+		            <th>Poids Type</th> 
+		        </tr> 
+		    </thead> 
+		    <tbody> 
+		    	{{#each rows}}
+		        <tr> 
+		            <td class="first">{{@index}}</td> 
+		            <td>{{this.[1]}} %</td> 
+		            <td>{{this.0.words}}</td> 
+		            <td>{{this.0.meta}}</td> 
+		            <td>{{this.0.compositeur}}</td> 
+					<td>{{this.0.chef}}</td> 
+		            <td>{{this.0.choregraphe}}</td>
+		            <td>{{this.0.metteur}}</td>
+					<td>{{this.0.type}}</td> 
+					<td>{{this.[0].salle}}</td> 
+		        </tr> 
+		        {{/each}}
+		    </tbody> 
+		</table>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+    	<div class="col-md-12 text-center" id="graphload">
+    		<img src="/images/preloader.gif" alt="loading"> 
+    	</div>
+    	<div style="overflow:scroll;display:none;" class="panel panel-default col-md-6 text-center" id="svg-holder"></div>
+    	<div style="overflow:scroll;display:none;" class="panel panel-default col-md-6" id="svg-holder-client"></div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="messages">
+    	<form id="select">
+	        <input type="hidden" class="file" name="file" id="file">
+			<input type="hidden" value="{{best}}" id="best-ponderation" name="ponderation">
+			<div class="col-md-4 col-md-offset-4">
+		        <select name="spectacle" onchange="displayNeighbours()" class="form-control">
+		        {{#each spectacles}}
+		        <option value="{{ this.id }}">
+		          {{ this.name }}
+		        </option>
+		        {{/each}}
+		      </select>
+		    </div>
+	    </form>
+	    <br />
+	    <div class="col-md-12 text-center" id="tableloadselect">
+    		<img src="/images/preloader.gif" alt="loading"> 
+    	</div>
+	    <div class="col-md-12">
+	    <table class="tablesorter table table-striped table-bordered" cellspacing="1" style="display:none;" id="near-spectacles">
+		    <thead> 
+		        <tr> 
+		            <th>Classement</th> 
+		            <th>Spectacle</th> 
+		            <th>Note de similarité calculée</th> 
+		        </tr> 
+		    </thead> 
+		    <tbody> 
+		    </tbody> 
+		</table>
+	</div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="settings">
+
+ 		<table class="tablesorter table table-striped table-bordered" cellspacing="1" id="kpi" style="display:none;">
+		    <thead> 
+		        <tr> 
+		            <th>Spectacles de la nouvelle saison</th> 
+		            <th>Rappel</th> 
+		            <th>Précision</th> 
+		        </tr> 
+		    </thead> 
+		    <tbody> 
+		    	<div class="col-md-12 text-center" id="tableloadkpi">
+		    		<img src="/images/preloader.gif" alt="loading"> 
+		    	</div>
+		    </tbody> 
+		</table>
+    </div>
+  </div>
+{{/if}}
+ 
+</div>
+
