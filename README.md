@@ -29,21 +29,23 @@ npm start
 and go to [localhost:3000/](http://localhost:3000/)
 
 ### Pages
-##### Main
-Choose the ranges of ponderation to compare
+#### Main
+Choose the ranges of ponderation to compare.
 
-##### Résultats
-View each model and it correlation to the client data
+#### Résultats
+View each model and it correlation to the client data.
 
-##### Graphes
+#### Graphes
 Force-oriented graph representation of the spectacle proximity, computed with the model 
-on the right, with the client data on the left
+on the right, with the client data on the left.
 
-##### Spectacles proches
+#### Spectacles proches
 For each of the last season's spectacles, view its 5 closest neighbors in the training set.
 
-##### Rappel et précision
+#### Rappel et précision
 View the kpi for each spectacle of the last season :
-Rappel : Percentage of people whose presence was correctly anticipated out of the actual client list.
+
+**Rappel** : Percentage of people whose presence was correctly anticipated out of the actual client list.
 See [sensitity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Sensitivity)
-Précision : Percentage of people whose presence was correctly anticipated out of the computed list.
+
+**Précision** : Percentage of people whose presence was correctly anticipated out of the computed list.
