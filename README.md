@@ -46,6 +46,6 @@ For each of the last season's spectacles, view its 5 closest neighbors in the tr
 View the kpi for each spectacle of the last season :
 
 **Rappel** : Percentage of people whose presence was correctly anticipated out of the actual client list.
-See [sensitity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Sensitivity)
+See [Sensitivity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Sensitivity)
 
 **Précision** : Percentage of people whose presence was correctly anticipated out of the computed list.
